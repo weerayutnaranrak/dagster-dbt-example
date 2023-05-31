@@ -1,6 +1,6 @@
 """Collection of Cereal jobs"""
-from dagster import job
-
+from dagster import file_relative_path, job
+from dagster_dbt import dbt_cli_resource, dbt_run_op
 from dagster_example.ops.cereal import (
     display_results,
     download_cereals,
@@ -8,6 +8,18 @@ from dagster_example.ops.cereal import (
     find_highest_protein_cereal,
     hello_cereal,
 )
+
+DBT_PROJECT_PATH = file_relative_path(__file__, '../example')
+DBT_PROFILES = file_relative_path(__file__, '../example')
+
+dbt_resource = dbt_cli_resource.configured({
+    "project_dir": DBT_PROJECT_PATH, "profiles_dir": DBT_PROFILES, "models": ["my_first_dbt_model"]
+})
+
+
+@job(resource_defs={"dbt": dbt_resource})
+def my_first_dbt_model():
+    dbt_run_op()
 
 
 @job

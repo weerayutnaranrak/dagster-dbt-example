@@ -29,7 +29,8 @@ def download_cereals() -> List[dict]:
 @op
 def find_highest_calorie_cereal(cereals: List[dict]) -> str:
     """Example of a Dagster op that takes input and produces output."""
-    sorted_by_calorie = list(sorted(cereals, key=lambda cereal: cereal["calories"]))
+    sorted_by_calorie = list(
+        sorted(cereals, key=lambda cereal: cereal["calories"]))
     get_dagster_logger().info(
         f'{sorted_by_calorie[-1]["name"]} is the cereal that contains the most calories'
     )
@@ -39,7 +40,8 @@ def find_highest_calorie_cereal(cereals: List[dict]) -> str:
 @op
 def find_highest_protein_cereal(cereals: List[dict]) -> str:
     """Example of a Dagster op that takes input and produces output."""
-    sorted_by_protein = list(sorted(cereals, key=lambda cereal: cereal["protein"]))
+    sorted_by_protein = list(
+        sorted(cereals, key=lambda cereal: cereal["protein"]))
     get_dagster_logger().info(
         f'{sorted_by_protein[-1]["name"]} is the cereal that contains the most protein'
     )

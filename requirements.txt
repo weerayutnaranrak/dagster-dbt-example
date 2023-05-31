@@ -1,4 +1,7 @@
-dagit==1.1.13
-dagster-postgres==0.17.13
-dagster==1.1.13
+dagster
+dagit
+dagster-postgres
+dbt-core
+dbt-postgres
+dagster-dbt
 sqlalchemy<2.0.0
